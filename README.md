@@ -47,3 +47,5 @@ Last project of the second term of the Self Driving Car Nanodegree Program by Ud
 ## Polynomial fitting and MPC preprocessing
   
 ## Latency
+A contributing factor to latency is actuator dynamics. For example the time elapsed between when you command a steering angle to when that angle is actually achieved. This could easily be modeled by a simple dynamic system and incorporated into the vehicle model. One approach would be running a simulation using the vehicle model starting from the current state for the duration of the latency. The resulting state from the simulation is the new initial state for MPC.
+This was the approach I used. The code can be found from lines 127:140 in the `main.cpp` file.
