@@ -46,7 +46,8 @@ Last project of the second term of the Self Driving Car Nanodegree Program by Ud
 ## N e dt
   I choose `N`equals 12 and `dt` equals 0.08. I found that the model worked pretty well using these numbers. Previously, I tried decreasing `dt`, but the model was overfitting and the car was moving a lot. I, then, incremented `dt` to 0.2 but the car was not reacting fast enough and went off road. Regarding `N`, I found that a lower numbers didn't work fine.
 ## Polynomial fitting and MPC preprocessing
-  
+  The waypoints provided by the simulator are transformed to the car coordinates in the `main.cpp` file (lines 104-113). Then a 3rd-degree polynomial is fitted to the transformed waypoints (line 116). The polynomial coefficients are used to calculate `cte` and `epsi` (lines 118-122). They are used by `mpc.Solve` to create a reference trajectory and the predicted trajectory (lines 142-173).
+    
 ## Latency
 A contributing factor to latency is actuator dynamics. For example the time elapsed between when you command a steering angle to when that angle is actually achieved. This could easily be modeled by a simple dynamic system and incorporated into the vehicle model. One approach would be running a simulation using the vehicle model starting from the current state for the duration of the latency. The resulting state from the simulation is the new initial state for MPC.
 This was the approach I used. The code can be found in the `main.cpp` file (lines 127-140).
