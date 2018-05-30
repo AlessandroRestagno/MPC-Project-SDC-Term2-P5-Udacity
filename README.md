@@ -38,18 +38,22 @@ Last project of the second term of the Self Driving Car Nanodegree Program by Ud
 3. Compile: `cmake .. && make`
 4. Run it: `./mpc`.
   
+## Start the simulator
+Open the simulator and select Project 5: MPC controller.
+![P5_simulator](./images/P5_simulator.PNG)
+
 ## Video Example
   [YouTube video](https://youtu.be/k1vFmap3mXk)
-    
+  
 ## State, actuators and update
   The model used a kinematic model (not considering the way tyres and road interact).
 `
-x[t] = x[t-1] + v[t-1] * cos(psi[t-1]) * dt
-y[t] = y[t-1] + v[t-1] * sin(psi[t-1]) * dt
-psi[t] = psi[t-1] + v[t-1] / Lf * delta[t-1] * dt
-v[t] = v[t-1] + a[t-1] * dt
-cte[t] = f(x[t-1]) - y[t-1] + v[t-1] * sin(epsi[t-1]) * dt
-epsi[t] = psi[t] - psides[t-1] + v[t-1] * delta[t-1] / Lf * dt
+x[t] = x[t-1] + v[t-1] * cos(psi[t-1]) * dt  
+y[t] = y[t-1] + v[t-1] * sin(psi[t-1]) * dt  
+psi[t] = psi[t-1] + v[t-1] / Lf * delta[t-1] * dt  
+v[t] = v[t-1] + a[t-1] * dt  
+cte[t] = f(x[t-1]) - y[t-1] + v[t-1] * sin(epsi[t-1]) * dt  
+epsi[t] = psi[t] - psides[t-1] + v[t-1] * delta[t-1] / Lf * dt  
 `
 
 The state vector is given by:
@@ -66,10 +70,8 @@ The model update equation is:
 ![model update equaion](./images/Update_MPC.PNG)
 The solver uses the initial state to feed the model the constraints and the cost to return a vector that minimize the cost function.
 
-
-
 ## N e dt
-  I choose `N`equals 12 and `dt` equals 0.08. I found that the model worked pretty well using these numbers. Previously, I tried decreasing `dt`, but the model was overfitting and the car was moving a lot. I, then, incremented `dt` to 0.2 but the car was not reacting fast enough and went off road. Regarding `N`, I found that a lower numbers didn't work fine.
+  I choose `N`equals 12 and `dt` equals 0.08. I found that the model worked pretty well using these numbers. Previously, I tried decreasing `dt`, but the model was overfitting and the car was moving a lot. I, then, incremented `dt` to 0.2 but the car was not reacting fast enough and went off road. Regarding `N`, I found that a lower numbers didn't work fine.  
 ## Polynomial fitting and MPC preprocessing
   The waypoints provided by the simulator are transformed to the car coordinates in the `main.cpp` file (lines 104-113). Then a 3rd-degree polynomial is fitted to the transformed waypoints (line 116). The polynomial coefficients are used to calculate `cte` and `epsi` (lines 118-122). They are used by `mpc.Solve` to create a reference trajectory and the predicted trajectory (lines 142-173).
     
