@@ -39,7 +39,8 @@ Last project of the second term of the Self Driving Car Nanodegree Program by Ud
 4. Run it: `./mpc`.
   
 ## Video Example
-  
+  [YouTube video](https://youtu.be/k1vFmap3mXk)
+    
 ## State, actuators and update
   
 ## N e dt
