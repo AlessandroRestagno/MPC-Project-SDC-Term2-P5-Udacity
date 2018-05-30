@@ -37,3 +37,13 @@ Last project of the second term of the Self Driving Car Nanodegree Program by Ud
 2. Make a build directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./mpc`.
+  
+## Video Example
+  
+## State, actuators and update
+  
+## N e dt
+  
+## Polynomial fitting and MPC preprocessing
+  
+## Latency
