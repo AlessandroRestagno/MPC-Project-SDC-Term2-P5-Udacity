@@ -59,6 +59,11 @@ The state vector is given by:
 - `cte` cross-track error
 - `epsi` orientation error
 
+My actuator vector : `[delta, a]`
+`Delta` is the steering angle and `a` is the acceleration.
+
+
+
 ## N e dt
   I choose `N`equals 12 and `dt` equals 0.08. I found that the model worked pretty well using these numbers. Previously, I tried decreasing `dt`, but the model was overfitting and the car was moving a lot. I, then, incremented `dt` to 0.2 but the car was not reacting fast enough and went off road. Regarding `N`, I found that a lower numbers didn't work fine.
 ## Polynomial fitting and MPC preprocessing
