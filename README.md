@@ -42,7 +42,23 @@ Last project of the second term of the Self Driving Car Nanodegree Program by Ud
   [YouTube video](https://youtu.be/k1vFmap3mXk)
     
 ## State, actuators and update
-  
+  The model used a kinematic model (not considering the way tyres and road interact).
+`
+x[t] = x[t-1] + v[t-1] * cos(psi[t-1]) * dt
+y[t] = y[t-1] + v[t-1] * sin(psi[t-1]) * dt
+psi[t] = psi[t-1] + v[t-1] / Lf * delta[t-1] * dt
+v[t] = v[t-1] + a[t-1] * dt
+cte[t] = f(x[t-1]) - y[t-1] + v[t-1] * sin(epsi[t-1]) * dt
+epsi[t] = psi[t] - psides[t-1] + v[t-1] * delta[t-1] / Lf * dt
+`
+
+The state vector is given by:
+- `x` and `y` position
+- `psi` heading direction
+- `v` velocity
+- `cte` cross-track error
+- `epsi` orientation error
+
 ## N e dt
   I choose `N`equals 12 and `dt` equals 0.08. I found that the model worked pretty well using these numbers. Previously, I tried decreasing `dt`, but the model was overfitting and the car was moving a lot. I, then, incremented `dt` to 0.2 but the car was not reacting fast enough and went off road. Regarding `N`, I found that a lower numbers didn't work fine.
 ## Polynomial fitting and MPC preprocessing
