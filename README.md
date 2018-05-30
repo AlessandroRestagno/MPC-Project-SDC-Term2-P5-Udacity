@@ -63,7 +63,7 @@ My actuator vector : `[delta, a]`
 `Delta` is the steering angle and `a` is the acceleration.
 
 The model update equation is:
-[model update equaion](./images/Update_MPC.PNG)
+![model update equaion](./images/Update_MPC.PNG)
 The solver uses the initial state to feed the model the constraints and the cost to return a vector that minimize the cost function.
 
 
